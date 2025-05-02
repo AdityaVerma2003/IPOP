@@ -8,6 +8,7 @@ const FieldSchema = new mongoose.Schema({
 }, { _id: false });
 
 const GroupSchema = new mongoose.Schema({
+  menuItem:[FieldSchema],
   groupName: { type: String, required: true },
   fields: [FieldSchema],
 }, { timestamps: true });

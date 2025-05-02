@@ -16,9 +16,9 @@ connectDB();
 // POST endpoint to receive group data
 app.post('/api/groups', async (req, res) => {
     try {
-      const { groupName, fields, fieldOptions } = req.body;
+      const { menuItem ,groupName, fields, fieldOptions } = req.body;
   
-      if (!groupName || !fields || !Array.isArray(fields)) {
+      if (!groupName || !fields || !Array.isArray(fields) ||  !menuItem || !Array.isArray(menuItem)) {
         return res.status(400).json({ error: 'Invalid data' });
       }
 
@@ -32,7 +32,7 @@ app.post('/api/groups', async (req, res) => {
         });
       }
   
-      const newGroup = new Group({ groupName, fields });
+      const newGroup = new Group({ menuItem ,groupName, fields });
       await newGroup.save();
   
       res.status(201).json({ message: 'Group created successfully', group: newGroup });
